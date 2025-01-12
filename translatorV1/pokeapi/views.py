@@ -13,7 +13,7 @@ class PokemonListView(APIView):
         if(url == None):
             return
         try:
-            response = requests.get(pokemonObject.get("url"))
+            response = requests.get(url)
             response.raise_for_status()
         except requests.exceptions.RequestException as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -24,6 +24,7 @@ class PokemonListView(APIView):
             "name": data.get("name"),
             "weight": data.get("weight"),
             "id": data.get("id"),
+            "fullDetails": url,
         }
         return parsed_data
 
