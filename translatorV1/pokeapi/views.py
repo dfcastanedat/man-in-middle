@@ -24,9 +24,7 @@ class PokemonListView(APIView):
                 response.raise_for_status()
         except requests.exceptions.RequestException as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-        decodedData = streamData.decode('utf8').replace("'", '"')
-        data = json.loads(decodedData)
+        data = json.loads(streamData)
         parsed_data = {
             "sprite": data.get("sprites").get("front_default"),
             "name": data.get("name"),
