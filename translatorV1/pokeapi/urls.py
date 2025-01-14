@@ -1,6 +1,6 @@
-from django.urls import path
+from django.urls import re_path
 from .views import PokemonListView
 
 urlpatterns = [
-    path('pokemon/:?offset/:?limit', PokemonListView.as_view(), name='pokemon'),
+    re_path(r'^pokemon/?$', PokemonListView.as_view(), name='pokemon'),
 ]
