@@ -1,2 +1,6 @@
 requests
 djangorestframework
+aiohttp
+asyncio
+adrf
+gunicorn
